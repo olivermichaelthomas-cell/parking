@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+}
+header {
+  background: #0055a5;
+  color: white;
+  padding: 12px;
+}
+nav a {
+  margin-right: 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+main {
+  padding: 16px;
+}
+.card {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+}
+button {
+  padding: 10px 14px;
+  border: none;
+  background: #0055a5;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+input, select {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
