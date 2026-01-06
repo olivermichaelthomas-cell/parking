@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: parking
+      POSTGRES_PASSWORD: parking
+      POSTGRES_DB: parking
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  backend:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgres://parking:parking@db:5432/parking
+      JWT_SECRET: supersecret
+      PORT: 3001
+      NOTIFICATION_MINUTES_BEFORE: 10
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+    command: sh -c "npm run db:init && npm run start"
+  frontend:
+    build: ./frontend
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:3001
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    command: npm run start
+volumes:
+  db_data:
